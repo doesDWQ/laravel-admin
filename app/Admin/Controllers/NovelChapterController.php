@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\Novel;
+use App\Admin\Extensions\ExcelExpoter;
 use App\Models\NovelChapter;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -35,6 +35,19 @@ class NovelChapterController extends AdminController
         //static $image = '';
         $grid->column('created_at', __('创建时间'));
         $grid->column('updated_at', __('发布时间'));
+
+        $grid->exporter(new ExcelExpoter());
+
+        $grid->filter(function($filter){
+
+            // 去掉默认的id过滤器
+            //$filter->disableIdFilter();
+
+            // 在这里添加字段过滤器
+            $filter->like('novel.title', '小说名');
+            //...
+
+        });
 
         return $grid;
     }

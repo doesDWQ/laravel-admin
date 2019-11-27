@@ -30,16 +30,8 @@ class NovelController extends AdminController
         $grid->column('id', __('id'));
         $grid->column('title', __('小说名'));
         $grid->column('auth', __('作者'));
-        //static $image = '';
         $grid->column('img', __('封面图'));
         $grid->column('description', __('描述信息'))->limit(20);
-        $grid->column('title', __('title'));
-//        $grid->column('email', __('Email'));
-//        $grid->column('email_verified_at', __('Email verified at'));
-//        $grid->column('password', __('Password'));
-//        $grid->column('remember_token', __('Remember token'));
-//        $grid->column('created_at', __('Created at'));
-//        $grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }
